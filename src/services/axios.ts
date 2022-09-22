@@ -1,11 +1,14 @@
 import axios from "axios";
 
-
-export const api = axios.create({
-    baseURL: 'https://back-end-chi.vercel.app/api',
+const api = axios.create({
+    baseURL: "http://localhost:3000/api",
     headers: {
       'Content-Type': 'application/json',
     },
     timeout: 5000,
     timeoutErrorMessage:"Tempo espirado..."
 });
+
+
+
+export { api }

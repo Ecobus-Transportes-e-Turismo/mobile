@@ -12,9 +12,8 @@ const AdminRoutes:React.FC = () =>{
   return(
     <Drawer.Navigator 
       drawerContent={ props => <DrawerMenu {...props}/>}
-       
       screenOptions={{
-        headerShown:false,
+        headerShown:true,
         drawerActiveBackgroundColor:"rgba(30, 60, 36,.1)",
         drawerInactiveTintColor:"#333",
         drawerActiveTintColor:"#000",
@@ -23,12 +22,11 @@ const AdminRoutes:React.FC = () =>{
           fontSize:16,
           fontFamily:'Roboto'
         }
-
     }}>
         <Drawer.Screen name="DashBoard" component={DashBoard} options={{
             drawerIcon:()=> (
                 <FontAwesome5 name='scroll' size={20} color='#000'/>
-            )
+            ),
         }}/>
         <Drawer.Screen name="Services" component={Services} options={{
             drawerIcon:()=> (

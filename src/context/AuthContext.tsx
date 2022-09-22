@@ -4,10 +4,6 @@ import { SingIn } from '../services/auth';
 import AsyncStorege from '@react-native-async-storage/async-storage';
 import Loadding from "../components/loadding";
 
-type props = {
-    children:JSX.Element
-}
-
 interface AuthContext {
     singed:boolean,
     user:Users | null,
@@ -18,7 +14,7 @@ interface AuthContext {
 
 const AuthContext = createContext<AuthContext >({} as AuthContext);
 
-export const AuthProvider:React.FC<props> = ({children}) => {
+export const AuthProvider = ({children}:any) => {
 
     const [user, setUser] = useState<null | Users>(null);
     const [loadding, setLoadding] = useState<boolean>(true);
@@ -37,11 +33,11 @@ export const AuthProvider:React.FC<props> = ({children}) => {
     }, []);
 
     const singIn = async ({email, password}:SingInType) => {
-        const { user, token } = await SingIn({password, email}); 
+        setLoadding(true);
+        const {user, token} = await SingIn({password, email}); 
         setUser(user);
         await AsyncStorege.setItem('@RNAuth:user', JSON.stringify(user));
         await AsyncStorege.setItem('@RNAuth:token', JSON.stringify(token));
-        
         setLoadding(false);
     }
 

@@ -21,6 +21,7 @@ export const GlobalStyle = StyleSheet.create({
         borderBottomColor:'#000',
         borderBottomWidth:1,
         shadowColor:'#000',
+        width:'100%'
     },
 
     link:{},
